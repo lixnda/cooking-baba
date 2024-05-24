@@ -22,6 +22,19 @@ class Recipe {
   boolean isServed() {
     return served; 
   }
+  //is overidden in curry and cake
+  void catchIngredients() {
+  
+  }
+  void prepare() {
+  
+  }
+  void stir() {
+  
+  }
+  void serve() {
+  
+  }
   
   
 }
