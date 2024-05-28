@@ -4,6 +4,7 @@ class Vegetable {
   private PVector velocity;
   private PVector gravity;
   private PVector acceleration;
+  private boolean 
   
   Vegetable(float x, float y, float xVel, float yVel, float size) {
     location = new PVector(x,y);
@@ -18,5 +19,5 @@ class Vegetable {
     velocity.limit(5);
     acceleration.set(0,0);
   }
-  
+  //setup color later either red green or yellow
 }
