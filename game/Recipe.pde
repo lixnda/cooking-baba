@@ -2,7 +2,6 @@ class Recipe {
   private boolean ingredientsCaught;
   private boolean prepared;
   private boolean stirred;
-  
   private PVector startPosition;
   private boolean served;
   
