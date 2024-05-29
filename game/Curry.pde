@@ -5,7 +5,8 @@ class Curry extends Recipe {
  private ArrayList<Vegetable> vegetables = new ArrayList<Vegetable>();
  private PVector startPosition;
  private float distanceStirred;
-  private float requiredDistance;
+ private float requiredDistance;
+ private int points;
 
  Curry() {
    super();
@@ -37,6 +38,17 @@ class Curry extends Recipe {
       }
     }
   }
-
+  //void isAllCaught() {
+  //  for (Vegetable v : vegetables) {
+  //    if (!v.isCaught()) {
+  //        ingredientsCaught = false;
+  //    }
+  //  }
+  //  ingredientsCaught = true;
+  //}
+  int points() {
+    return points;
   }
+  
+}
   
