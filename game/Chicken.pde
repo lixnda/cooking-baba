@@ -1,7 +1,8 @@
+
 class Chicken {
   private PVector location;
   private PVector velocity;
-  private float mass;
+  //private float mass;
   private boolean caught;
   
   Chicken(float x, float y, float xVel, float yVel) {
@@ -38,8 +39,9 @@ class Chicken {
   
 
   void display(){
-    PImage chicken = loadImage("chicken.png");
+    PImage chicken = loadImage("assets/chicken.png");
     image(chicken, location.x, location.y);
+    
   }
   
 }
