@@ -26,10 +26,18 @@ class Curry extends Recipe {
     
  }
   void update() {
+    int veggies = 0;
     for (Vegetable v : vegetables) {
       v.move();
-      v.display();
+      if (!v.display()) {
+        veggies++;
+      }
+      if (veggies == 3){
+        setIngredients(true);
+        break;
+      }
     }
+    
   }
  void mousePressed() {
     for (Vegetable v : vegetables) {
@@ -38,14 +46,7 @@ class Curry extends Recipe {
       }
     }
   }
-  //void isAllCaught() {
-  //  for (Vegetable v : vegetables) {
-  //    if (!v.isCaught()) {
-  //        ingredientsCaught = false;
-  //    }
-  //  }
-  //  ingredientsCaught = true;
-  //}
+ 
   int points() {
     return points;
   }

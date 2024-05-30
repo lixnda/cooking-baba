@@ -23,6 +23,12 @@ class Recipe {
   void catchIngredients() {
   
   }
+  void setIngredients(boolean b) {
+    ingredientsCaught = b;
+  }
+  boolean getIngredients() {
+    return ingredientsCaught;
+  }
   void prepare() {
   
   }
