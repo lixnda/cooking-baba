@@ -1,37 +1,49 @@
-
-class Chicken {
+class Chicken{
   private PVector location;
   private PVector velocity;
   //private float mass;
   private boolean caught;
+  private Gif gif;
+  private PApplet p;
   
-  Chicken(float x, float y, float xVel, float yVel) {
+  Chicken(PApplet p, float x, float y, float xVel, float yVel) {
+    this.p = p;
     location = new PVector(x, y); 
     velocity = new PVector(xVel, yVel);
     caught = false;
+    gif = new Gif(p, "assets/chicken.gif");
+    gif.loop();
+    
+  }
+  
+  boolean isCaught(){
+    return caught;
   }
   
   void move() {
     if (!caught) {
        location.add(velocity);
-       velocity.limit(10); // may change value
+       velocity.limit(7); // may change value
+    }
+    else{
+      gif.stop();
     }
   }
   
   void bounce() {
-    if (location.x > width || location.x < 0) {
+    if (location.x > p.width || location.x < 0) {
       velocity.x *= -1; // Change direction
     }
     
-    if (location.y > height || location.y < 0) {
+    if (location.y > p.height || location.y < 0) {
       velocity.y *= -1; // Change direction
     }
   }
   
   void stopIfClicked() {
     if (mousePressed) {
-      if (mouseX > location.x - 40 && mouseX < location.x + 40 &&
-          mouseY > location.y - 40 && mouseY < location.y + 40) {
+      if (mouseX > location.x+20 && mouseX < location.x + 70 &&
+          mouseY > location.y+20 && mouseY < location.y + 70) {
         caught = true;
       }
     }
@@ -39,8 +51,8 @@ class Chicken {
   
 
   void display(){
-    PImage chicken = loadImage("assets/chicken.png");
-    image(chicken, location.x, location.y);
+    //PImage chicken = loadImage("assets/chicken.png");
+    p.image(gif, location.x, location.y);
     
   }
   
