@@ -4,7 +4,7 @@ class Vegetable {
   private PVector velocity;
   private PVector gravity;
   private PVector acceleration;
-  private boolean isCaught;
+  private boolean caught;
   private int col;
   
   Vegetable(float x, float y, float xVel, float yVel, float size, int col) {
@@ -12,11 +12,11 @@ class Vegetable {
     velocity = new PVector(xVel, yVel);
     gravity = new PVector(0, 0.01);
     mass = size;
-    isCaught = false;
+    caught = false;
     this.col = col;
   }
   void move() {
-    if (!isCaught) {
+    if (!caught) {
      
       acceleration = PVector.div(gravity, mass);
       velocity.add(acceleration);
@@ -39,8 +39,8 @@ class Vegetable {
     }
   }
 
-  void display() {
-    if (!isCaught) {
+  boolean display() {
+    if (!caught || location.y < 0) {
       if (col == 1) {
         fill(255, 0, 0); // Red if col is 1
       } else if (col == 2) {
@@ -50,9 +50,11 @@ class Vegetable {
       } else {
         // Default to black if col is not 1, 2, or 3 just for structural
         fill(0);
-    }
+      }
       ellipse(location.x, location.y, mass, mass);
+      return true;
     }
+    return false;
   }
   boolean isCaught(float mouseX, float mouseY) {
     float distance = dist(mouseX, mouseY, location.x, location.y);
@@ -62,7 +64,10 @@ class Vegetable {
      return isCaught;
   }
   void caught() {
-    isCaught = true;
+    caught = true;
   }
-  //setup color later either red green or yellow
+ 
+  boolean isCaught() {
+     return caught; 
+  }
 }

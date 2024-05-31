@@ -5,8 +5,13 @@ class Curry extends Recipe {
  private ArrayList<Vegetable> vegetables = new ArrayList<Vegetable>();
  private PVector startPosition;
  private float distanceStirred;
+<<<<<<< HEAD
   private float requiredDistance;
   
+=======
+ private float requiredDistance;
+ private int points;
+>>>>>>> refs/remotes/origin/Elizabeth
 
  Curry() {
    super();
@@ -26,10 +31,18 @@ class Curry extends Recipe {
     
  }
   void update() {
+    int veggies = 0;
     for (Vegetable v : vegetables) {
       v.move();
-      v.display();
+      if (!v.display()) {
+        veggies++;
+      }
+      if (veggies == 3){
+        setIngredients(true);
+        break;
+      }
     }
+    
   }
  void mousePressed() {
     for (Vegetable v : vegetables) {
@@ -38,6 +51,7 @@ class Curry extends Recipe {
       }
     }
   }
+<<<<<<< HEAD
   
   void checkIngredientsCaught() {
     boolean allCaught = true;
@@ -53,5 +67,13 @@ class Curry extends Recipe {
         println("All ingredients caught!");
     }
 }
+}
+=======
+ 
+  int points() {
+    return points;
+  }
+>>>>>>> refs/remotes/origin/Elizabeth
+  
 }
   
