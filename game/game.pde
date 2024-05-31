@@ -34,7 +34,7 @@ void draw() {
     current = "curry";
   }
   if(current.equals("curry")){
-    curry.update();
+    curry.display();
   }
   
   if(key=='p'){

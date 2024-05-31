@@ -40,7 +40,7 @@ class Vegetable {
   }
 
   boolean display() {
-    if (!caught || location.y < 0) {
+    if (!caught && location.y > 0) {
       if (col == 1) {
         fill(255, 0, 0); // Red if col is 1
       } else if (col == 2) {
@@ -60,9 +60,7 @@ class Vegetable {
     float distance = dist(mouseX, mouseY, location.x, location.y);
     return distance < mass / 2;
   }
-  boolean isCaught() {
-     return isCaught;
-  }
+
   void caught() {
     caught = true;
   }
