@@ -6,6 +6,7 @@ class Curry extends Recipe {
  private PVector startPosition;
  private float distanceStirred;
   private float requiredDistance;
+  
 
  Curry() {
    super();
@@ -37,6 +38,20 @@ class Curry extends Recipe {
       }
     }
   }
-
-  }
+  
+  void checkIngredientsCaught() {
+    boolean allCaught = true;
+    for (Vegetable v : vegetables) {
+        if (!v.isCaught()) {
+            allCaught = false;
+            println("Some missed!");
+            break;
+        }
+    }
+    if (allCaught) {
+        ingredientsCaught = true;
+        println("All ingredients caught!");
+    }
+}
+}
   

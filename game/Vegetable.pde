@@ -58,6 +58,9 @@ class Vegetable {
     float distance = dist(mouseX, mouseY, location.x, location.y);
     return distance < mass / 2;
   }
+  boolean isCaught() {
+     return isCaught;
+  }
   void caught() {
     isCaught = true;
   }
