@@ -50,7 +50,7 @@ class Cake{
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
       //60fps?
-      if(frames>900){
+      if(frames>9){
         point = pointChicken();
         levelDone=true;
       }

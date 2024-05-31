@@ -1,6 +1,7 @@
 class Egg{
   private int mass;
   private PVector acceleration;
+  private boolean cracked;
   
   Egg(int mass){
     this.mass = mass;
@@ -25,6 +26,11 @@ class Egg{
   void display(){
     PImage egg = loadImage("assets/egg.jpg");
     image(egg, mouseX-100, mouseY-80);
+    
+    fill(#fbefbf);
+    ellipse(100, 800, 600, 500);
+    fill(#FFFFFF);
+    ellipse(100, 800, 500, 400);
     
   }
 }
