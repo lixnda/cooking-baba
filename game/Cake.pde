@@ -5,15 +5,23 @@ class Cake{
   private int levelTime;
   
   ArrayList<Chicken> ChickenList;
-  String[] games = {"chicken", "egg", "flour", "bake", "decor"};
+  //ArrayList<Egg> EggList;
+  Ingredient ing;
+  String[] games = {"chicken", "ingredient", "bake", "decor"};
   int level = 0;
   boolean levelDone;
   
+  
   Cake(PApplet p){
     ChickenList = new ArrayList<Chicken>();
-    for(int i = 0; i<=20; i++){
+    for(int i = 0; i<20; i++){
       ChickenList.add(new Chicken(p, random(50,550), random(50,850),random(-6,6),random(-6,7)));
     }
+    //EggList = new ArrayList<Egg>();
+    //for(int i = 0; i<8; i++){
+    //  EggList.add(new Egg(random(5, 10)));
+    //}
+    ing = new Ingredient(20);
     point = 0;
     frames = 0;
     current = "chicken";
@@ -57,10 +65,36 @@ class Cake{
     }
       
     if(current.equals("egg")){
-      background(0);
-      Egg e1 = new Egg(20);
-      e1.display();
+      //background(0);
+      //Egg show = EggList.get(0);
+      //int index = 0;
+      //for(int i = 0; i<EggList.size(); i++){
+      //  if(!EggList.get(i).getCrack()&&!EggList.get(i).getLost()){
+      //    show = EggList.get(i);
+      //    index = i;
+      //    break;
+      //  }
+      //}
+      //show.display();
+      //textSize(20);
     }
+    
+    if(current.equals("ingredient")){
+      ing.display();
+      textSize(30);
+      fill(0);
+      text("time left: " + ((levelTime-frames)/30), 25, 50);
+      //if(frames>1000){
+      //  levelDone = true;
+      //}
+    }
+    
+    if(current.equals("bake")){
+    }
+    
+    if(current.equals("decor")){
+    }
+      
   }
   
   int pointChicken(){
@@ -71,6 +105,12 @@ class Cake{
       }
     }
     return total;
+  }
+  
+  void mousePressed(){
+    if(current.equals("ingredient")){
+      ing.mousePressed();
+    }
   }
   
 }
