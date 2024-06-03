@@ -36,6 +36,7 @@ void draw() {
   if(current.equals("curry")){
     curry.display();
   }
+ 
   
   if(key=='p'){
     current="cake";
@@ -49,4 +50,7 @@ void mousePressed() {
   if(current.equals("curry")){
       curry.mousePressed();
     }
+}
+void mouseDragged() {
+  curry.mouseDragged();
 }

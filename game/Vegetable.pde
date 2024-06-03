@@ -10,7 +10,7 @@ class Vegetable {
   Vegetable(float x, float y, float xVel, float yVel, float size, int col) {
     location = new PVector(x,y);
     velocity = new PVector(xVel, yVel);
-    gravity = new PVector(0, 0.01);
+    gravity = new PVector(0, 5);
     mass = size;
     caught = false;
     this.col = col;
@@ -22,7 +22,7 @@ class Vegetable {
       velocity.add(acceleration);
       location.add(velocity);
       bounce();
-      velocity.limit(5);
+      velocity.limit(20);
       acceleration.set(0,0);
     }
   }
