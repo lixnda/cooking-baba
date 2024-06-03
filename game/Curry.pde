@@ -49,7 +49,6 @@ class Curry {
     vegetables.add(veggie3);
   }
 
-<<<<<<< HEAD
   void display() {
     frames++;
     if(levelDone){
@@ -152,34 +151,7 @@ class Curry {
     return false;
   }
 
-  void mousePressed() {
-=======
- Curry() {
-   super();
-   requiredDistance = 100;
-   startPosition = new PVector(mouseX, mouseY);
-   catchIngredients();
- }
- 
- 
- void catchIngredients() {
-     Vegetable veggie = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 1);
-     Vegetable veggie2 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 2);
-     Vegetable veggie3 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 3);
-     vegetables.add(veggie);
-     vegetables.add(veggie2);
-     vegetables.add(veggie3);
- }
- 
-  void update() {
-    for (Vegetable v : vegetables) {
-      v.move();
-      v.display();
-    }
-  }
-  
  void mousePressed() {
->>>>>>> refs/remotes/origin/main
     for (Vegetable v : vegetables) {
       if (v.isCaught(mouseX, mouseY)) {
         v.caught();
@@ -187,24 +159,14 @@ class Curry {
     }
   }
   
-<<<<<<< HEAD
+
   void mouseDragged() {
     if (current.equals("peel") && !levelDone) {
       peel(mouseX, mouseY);
     }
   }
 
-=======
-  //void isAllCaught() {
-  //  for (Vegetable v : vegetables) {
-  //    if (!v.isCaught()) {
-  //        ingredientsCaught = false;
-  //    }
-  //  }
-  //  ingredientsCaught = true;
-  //}
-  
->>>>>>> refs/remotes/origin/main
+
   int points() {
     return points;
   }
