@@ -13,27 +13,32 @@ class Ingredient{
     flour = loadImage("assets/flour.png");
     sugar = loadImage("assets/sugar.png");
     salt = loadImage("assets/salt.png");
-    egg = loadImage("assets/egg.jpeg");
+    egg = loadImage("assets/egg.png");
     baking = loadImage("assets/baking.png");
     milk = loadImage("assets/milk.png");
-    strawberry = loadImage("assets/strawberry.png");
+    strawberry = loadImage("assets/strawb.png");
     butter = loadImage("assets/butter.png");
     
-    flour.resize(150, 0);
-    sugar.resize(150, 0);
-    salt.resize(150, 0);
-    egg.resize(150, 0);
-    baking.resize(150, 0);
-    milk.resize(150, 0);
-    strawberry.resize(150, 0);
-    butter.resize(150, 0);
+    flour.resize(150, 150);
+    sugar.resize(150, 150);
+    salt.resize(150, 150);
+    egg.resize(150, 150);
+    baking.resize(150, 150);
+    milk.resize(150, 150);
+    strawberry.resize(150, 150);
+    butter.resize(150, 150);
   }
   
   void display(){
     textSize(50);
-    text(order.toString(), 50, 300);
     
-    text("Ingridients left: " + order.size(), 50, 200);
+    String display = "";
+    if(order.size()>0){
+      display = order.get(0);
+    }
+    
+    text(display, 270, 300);
+    text("Ingredients left: " + order.size(), 50, 200);
       
     int height = 390;
     image(flour, 0, height);
