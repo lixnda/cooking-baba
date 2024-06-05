@@ -7,6 +7,9 @@ class Cake{
   ArrayList<Chicken> ChickenList;
   Ingredient ing;
   Decor c;
+  int a;
+  int b;
+  int temp;
   String[] games = {"chicken", "ingredient", "bake", "decor"};
   int level = 1;
   boolean levelDone;
@@ -21,10 +24,13 @@ class Cake{
     }
     ing = new Ingredient(20);
     c = new Decor();
+    a= (int)(random(1, 999));
+    b= (int)(random(1, 999));
+    temp = 0;
     point = 0;
     frames = 0;
     current = "chicken";
-    levelTime = 900;
+    levelTime = 10;
     frameRate(30);
     done0 = loadImage("assets/done0.png");
     done1 = loadImage("assets/done1.png");
@@ -82,7 +88,21 @@ class Cake{
     }
     
     if(current.equals("bake")){
-      current="leveldone";
+      background(0);
+      text("bake at the correct temperature: \n" + a + "+" + b, 0, 300);
+      text(temp, 120, 500);
+      ellipse(150, 600, 100, 100);
+      ellipse(350, 600, 100, 100);
+      if(mousePressed==true&&dist(200, 600, mouseX, mouseY)<50){
+        temp++;
+      }
+      if(mousePressed==true&&dist(400, 600, mouseX, mouseY)<50){
+        temp--;
+      }
+      if(keyPressed==true&&key=='d'){
+        boolean correct = ((a+b)==temp);
+        text("right"+correct, 300, 600);
+      }
     }
     
     if(current.equals("decor")){
