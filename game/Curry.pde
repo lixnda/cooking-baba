@@ -161,7 +161,7 @@ class Curry {
     return false;
   }
 
-  void mousePressed() {
+ void mousePressed() {
     for (Vegetable v : vegetables) {
       if (v.isCaught(mouseX, mouseY)) {
         v.caught();
@@ -169,11 +169,13 @@ class Curry {
     }
   }
   
+
   void mouseDragged() {
     if (current.equals("peel") && !levelDone) {
       peel(mouseX, mouseY);
     }
   }
+
 
   int points() {
     return points;

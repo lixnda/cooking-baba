@@ -50,6 +50,9 @@ void mousePressed() {
   if(current.equals("curry")){
       curry.mousePressed();
     }
+  if(current.equals("cake")){
+    cake.mousePressed();
+  }
 }
 void mouseDragged() {
   curry.mouseDragged();
