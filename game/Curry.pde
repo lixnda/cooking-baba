@@ -67,7 +67,7 @@ class Curry {
       }
       textSize(50);
       fill(#FFFFFF);
-      text("press n to continue \n current points: " + point, 100, 500, 450, 500);
+      text("press n to continue \n current points: " + points, 100, 500, 450, 500);
       if(keyPressed==true&&key=='n' && level<4){
         current = games[level];
         level++;
