@@ -74,6 +74,8 @@ class Curry {
       }
     }
     if (current.equals("catch") && !levelDone) {
+      PImage bg = loadImage("assets/grass.png");
+      bg.resize(600,900);
       levelTime = 300;
       for (Vegetable v : vegetables) {
         v.move();
@@ -98,6 +100,8 @@ class Curry {
       }
     }
     else if (current.equals("peel") && !levelDone) {
+      PImage bg = loadImage("assets/kitchen.png");
+      bg.resize(600,900);
       image(pg, width/2 - 100, height/2 - 100); 
       image(peelGraphics, width/2 - 100, height/2 - 100);
       drawUnpeeled();
