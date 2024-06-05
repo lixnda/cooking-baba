@@ -5,11 +5,13 @@ class Cake{
   private int levelTime;
   
   ArrayList<Chicken> ChickenList;
-  //ArrayList<Egg> EggList;
   Ingredient ing;
+  Decor c;
   String[] games = {"chicken", "ingredient", "bake", "decor"};
   int level = 0;
   boolean levelDone;
+  PImage done0;
+  PImage done1;
   
   
   Cake(PApplet p){
@@ -17,30 +19,35 @@ class Cake{
     for(int i = 0; i<20; i++){
       ChickenList.add(new Chicken(p, random(50,550), random(50,850),random(-6,6),random(-6,7)));
     }
-    //EggList = new ArrayList<Egg>();
-    //for(int i = 0; i<8; i++){
-    //  EggList.add(new Egg(random(5, 10)));
-    //}
     ing = new Ingredient(20);
+    c = new Decor();
     point = 0;
     frames = 0;
     current = "chicken";
     levelTime = 900;
     frameRate(30);
+    done0 = loadImage("assets/done0.png");
+    done1 = loadImage("assets/done1.png");
+    done0.resize(600, 900);
+    done1.resize(600, 900);
   }
   
   void display() {
     frames++;
-    if(levelDone){
+    if(current.equals("leveldone")){
       frames = 0;
-      background(0);
+      if(second()%2==0){
+      image(done0, 0, 0);
+      }
+      else{
+        image(done1,0,0);
+      }
       textSize(50);
-      fill(200);
+      fill(#FFFFFF);
       text("press n to continue \n current points: " + point, 100, 500, 450, 500);
-      if(key=='n' && level<5){
-        level++;
+      if(keyPressed==true&&key=='n' && level<4){
         current = games[level];
-        levelDone = false;
+        level++;
       }
     }
     
@@ -58,25 +65,10 @@ class Cake{
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
       //60fps?
-      if(frames>9){
+      if(frames>levelTime){
         point = pointChicken();
-        levelDone=true;
+        current="leveldone";
       }
-    }
-      
-    if(current.equals("egg")){
-      //background(0);
-      //Egg show = EggList.get(0);
-      //int index = 0;
-      //for(int i = 0; i<EggList.size(); i++){
-      //  if(!EggList.get(i).getCrack()&&!EggList.get(i).getLost()){
-      //    show = EggList.get(i);
-      //    index = i;
-      //    break;
-      //  }
-      //}
-      //show.display();
-      //textSize(20);
     }
     
     if(current.equals("ingredient")){
@@ -84,15 +76,22 @@ class Cake{
       textSize(30);
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
-      //if(frames>1000){
-      //  levelDone = true;
-      //}
+      if(frames>levelTime){
+        current="leveldone";
+      }
     }
     
     if(current.equals("bake")){
+      current="leveldone";
     }
     
     if(current.equals("decor")){
+      c.display();
+      fill(#FFFFFF);
+      text("press k to continue", 140, 200);
+      if(keyPressed==true&&key=='k'){
+        current = "leveldone";
+      }
     }
       
   }
@@ -110,6 +109,9 @@ class Cake{
   void mousePressed(){
     if(current.equals("ingredient")){
       ing.mousePressed();
+    }
+    if(current.equals("decor")){
+      c.mousePressed();
     }
   }
   
