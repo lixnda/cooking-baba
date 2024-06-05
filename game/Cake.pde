@@ -8,7 +8,7 @@ class Cake{
   Ingredient ing;
   Decor c;
   String[] games = {"chicken", "ingredient", "bake", "decor"};
-  int level = 0;
+  int level = 1;
   boolean levelDone;
   PImage done0;
   PImage done1;
