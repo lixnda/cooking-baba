@@ -44,9 +44,15 @@ class Curry {
     Vegetable veggie = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 1);
     Vegetable veggie2 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 2);
     Vegetable veggie3 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 3);
+    Vegetable veggie4 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 1);
+    Vegetable veggie5 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 2);
+    Vegetable veggie6 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 3);
     vegetables.add(veggie);
     vegetables.add(veggie2);
     vegetables.add(veggie3);
+    vegetables.add(veggie4);
+    vegetables.add(veggie5);
+    vegetables.add(veggie6);
   }
 
   void display() {

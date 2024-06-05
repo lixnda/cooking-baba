@@ -44,7 +44,7 @@ class Cake{
       }
     }
     
-    if(current.equals("chicken")&&!levelDone){
+    else if(current.equals("chicken")&&!levelDone){
       PImage bg = loadImage("assets/grass.png");
       bg.resize(600,900);
       image(bg, 0, 0);
@@ -58,13 +58,13 @@ class Cake{
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
       //60fps?
-      if(frames>9){
+      if(frames>900){
         point = pointChicken();
         levelDone=true;
       }
     }
       
-    if(current.equals("egg")){
+    else if(current.equals("egg")){
       //background(0);
       //Egg show = EggList.get(0);
       //int index = 0;
@@ -79,7 +79,7 @@ class Cake{
       //textSize(20);
     }
     
-    if(current.equals("ingredient")){
+    else if(current.equals("ingredient")){
       ing.display();
       textSize(30);
       fill(0);

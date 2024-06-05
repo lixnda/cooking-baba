@@ -10,7 +10,7 @@ class Vegetable {
   Vegetable(float x, float y, float xVel, float yVel, float size, int col) {
     location = new PVector(x,y);
     velocity = new PVector(xVel, yVel);
-    gravity = new PVector(0, 5);
+    gravity = new PVector(0, 3);
     mass = size;
     caught = false;
     this.col = col;
