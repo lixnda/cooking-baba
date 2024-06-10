@@ -42,8 +42,8 @@ class Chicken{
   
   void stopIfClicked() {
     if (mousePressed) {
-      if (mouseX > location.x+20 && mouseX < location.x + 70 &&
-          mouseY > location.y+20 && mouseY < location.y + 70) {
+      if (mouseX > location.x && mouseX < location.x + 100 &&
+          mouseY > location.y && mouseY < location.y + 100) {
         caught = true;
       }
     }
