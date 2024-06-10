@@ -23,6 +23,8 @@ class Curry {
   private float totalArea;
   private float requiredPeelPercentage;
   private ArrayList<PVector> peeledPart = new ArrayList<PVector>();
+  PImage done0;
+  PImage done1;
   
   Curry() {
     requiredDistance = 100;
@@ -38,6 +40,10 @@ class Curry {
     peeledArea = 0;
     totalArea = PI * sq(100); // Area of the circle with radius 100
     catchIngredients();
+    done0 = loadImage("assets/done0.png");
+    done1 = loadImage("assets/done1.png");
+    done0.resize(600, 900);
+    done1.resize(600, 900);
   }
   
   void catchIngredients() {
@@ -57,19 +63,25 @@ class Curry {
 
   void display() {
     frames++;
-    if(levelDone){
+    if(current.equals("leveldone")){
       frames = 0;
-      background(0);
+      if(second()%2==0){
+      image(done0, 0, 0);
+      }
+      else{
+        image(done1,0,0);
+      }
       textSize(50);
-      fill(200);
+      fill(#FFFFFF);
       text("press n to continue \n current points: " + points, 100, 500, 450, 500);
-      if(key=='n' && level<5){
-        level++;
+      if(keyPressed==true&&key=='n' && level<4){
         current = games[level];
-        levelDone = false;
+        level++;
       }
     }
     if (current.equals("catch") && !levelDone) {
+      PImage bg = loadImage("assets/grass.png");
+      bg.resize(600,900);
       levelTime = 300;
       for (Vegetable v : vegetables) {
         v.move();
@@ -85,7 +97,7 @@ class Curry {
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
       if (frames > 300 || veggies == 3) {
-        levelDone = true;
+        current = "leveldone";
         for (Vegetable v : vegetables) {
           if (v.isCaught()) {
             points++;
@@ -94,6 +106,8 @@ class Curry {
       }
     }
     else if (current.equals("peel") && !levelDone) {
+      PImage bg = loadImage("assets/kitchen.png");
+      bg.resize(600,900);
       image(pg, width/2 - 100, height/2 - 100); 
       image(peelGraphics, width/2 - 100, height/2 - 100);
       drawUnpeeled();
@@ -106,7 +120,7 @@ class Curry {
       //60fps?
       if(frames>300){
         peelPoints(peeledArea / totalArea);
-        levelDone = true;
+        current = "leveldone";
       }
     }
   }
