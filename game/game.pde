@@ -43,8 +43,12 @@ void draw() {
   }
   if(current.equals("cake")){
     cake.display();
+    if(cake.getCurrent().equals("done")&&keyPressed==true&&key=='n'){
+      current = "start";
+      cake = new Cake(this);
+    }
   }
-  }
+}
 
 void mousePressed() {
   if(current.equals("curry")){
