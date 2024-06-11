@@ -1,12 +1,12 @@
 class Boil {
-  float barX, barY, barWidth, barHeight;
-  float targetX, targetWidth;
-  float sliderX, speed;
-  boolean sliderMovingRight;
-  boolean gameActive;
-  int points;
-  PImage bg;
-  PImage pot;
+  private float barX, barY, barWidth, barHeight;
+  private float targetX, targetWidth;
+  private float sliderX, speed;
+  private boolean sliderMovingRight;
+  private boolean gameActive;
+  private int points;
+  private PImage bg;
+  private PImage pot;
 
   Boil() {
    barX = 50;

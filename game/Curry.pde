@@ -140,7 +140,7 @@ class Curry {
     else if (current.equals("boil")) {
        b.display();
        if (!b.isActive()) {
-         points = b.getPoints();
+         points += b.getPoints();
          current = "leveldone";
        }
     }
@@ -160,19 +160,19 @@ class Curry {
       textAlign(CENTER);
       fill(#FFFFFF);
       text("Click N to Exit", 300, 300);
-      if(points>=2){
+      if(points>=3){
         image(starList.get(0), 0, 100);
       }
-      if(points>=4){
+      if(points>=6){
         image(starList.get(1), 120, 100);
       }
-      if(points>=6){
+      if(points>=9){
         image(starList.get(2), 240, 100);
       }
-      if(points>=8){
+      if(points>=12){
         image(starList.get(3), 360, 100);
       }
-      if(points==10){
+      if(points==15){
         image(starList.get(4), 480, 100);
       }
     }
