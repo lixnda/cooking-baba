@@ -2,7 +2,7 @@ class Ingredient{
   private ArrayList<String> order;
   
   String[] possible = {"flour", "sugar", "salt", "egg", "baking powder", "milk", "strawberry","butter"};
-  PImage flour, sugar, salt, egg, baking, milk, strawberry, butter;
+  PImage flour, sugar, salt, egg, baking, milk, strawberry, butter, background;
   
   Ingredient(int total){
     order = new ArrayList<String>();
@@ -18,6 +18,7 @@ class Ingredient{
     milk = loadImage("assets/milk.png");
     strawberry = loadImage("assets/strawb.png");
     butter = loadImage("assets/butter.png");
+    background = loadImage("assets/bg0.png");
     
     flour.resize(150, 150);
     sugar.resize(150, 150);
@@ -27,9 +28,16 @@ class Ingredient{
     milk.resize(150, 150);
     strawberry.resize(150, 150);
     butter.resize(150, 150);
+    background.resize(600, 900);
+  }
+  
+  int getSize(){
+    return order.size();
   }
   
   void display(){
+    fill(#FFFFFF);
+    image(background, 0, 0);
     textSize(50);
     
     String display = "";
@@ -37,8 +45,10 @@ class Ingredient{
       display = order.get(0);
     }
     
-    text(display, 270, 300);
-    text("Ingredients left: " + order.size(), 50, 200);
+    textAlign(CENTER);
+    text("Ingredients left: " + order.size(), 300, 200);
+    textSize(75);
+    text(display, 300, 300);
       
     int height = 390;
     image(flour, 0, height);

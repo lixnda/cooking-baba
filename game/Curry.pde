@@ -1,17 +1,12 @@
 import java.util.ArrayList;
 class Curry {
-  private boolean ingredientsCaught;
-  private boolean prepared;
-  private boolean stirred;
-  private boolean served;
-  private boolean poured;
   private int peelerSize;
   private ArrayList<Vegetable> vegetables = new ArrayList<Vegetable>();
   private PVector startPosition;
   private float distanceStirred;
   private float requiredDistance;
   private int points;
-  private String[] games = {"catch", "peel", "stir", "pour"};
+  private String[] games = {"catch", "peel", "boil", "pour"};
   private String current;
   private int frames;
   private int levelTime;
@@ -25,8 +20,17 @@ class Curry {
   private ArrayList<PVector> peeledPart = new ArrayList<PVector>();
   PImage done0;
   PImage done1;
+  PImage end;
+  ArrayList<Gif> starList;
+  Pour c;
+  Boil b;
   
-  Curry() {
+  Curry(PApplet p) {
+    starList = new ArrayList<Gif>();
+    for(int i = 0; i<5; i++){
+      starList.add(new Gif(p, "assets/star.gif"));
+      starList.get(i).loop();
+    }
     requiredDistance = 100;
     startPosition = new PVector(mouseX, mouseY);
     current = "catch";
@@ -38,12 +42,16 @@ class Curry {
     peelGraphics = createGraphics(200, 200);
     requiredPeelPercentage = 0.9; 
     peeledArea = 0;
-    totalArea = PI * sq(100); // Area of the circle with radius 100
+    totalArea = PI * sq(100); 
     catchIngredients();
     done0 = loadImage("assets/done0.png");
     done1 = loadImage("assets/done1.png");
     done0.resize(600, 900);
     done1.resize(600, 900);
+    end = loadImage("assets/end.png");
+    end.resize(600,900);
+    c = new Pour();
+    b = new Boil();
   }
   
   void catchIngredients() {
@@ -75,12 +83,13 @@ class Curry {
       fill(#FFFFFF);
       text("press n to continue \n current points: " + points, 100, 500, 450, 500);
       if(keyPressed==true&&key=='n' && level<4){
+                level++;
         current = games[level];
-        level++;
       }
     }
-    if (current.equals("catch") && !levelDone) {
+    if (current.equals("catch")) {
       PImage bg = loadImage("assets/grass.png");
+      image(bg, 0, 0);
       bg.resize(600,900);
       levelTime = 300;
       for (Vegetable v : vegetables) {
@@ -96,18 +105,19 @@ class Curry {
       textSize(50);
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
-      if (frames > 300 || veggies == 3) {
-        current = "leveldone";
+      if (frames > 300 || veggies == 6) {
         for (Vegetable v : vegetables) {
           if (v.isCaught()) {
             points++;
           }
         }
+         current = "leveldone";
       }
     }
-    else if (current.equals("peel") && !levelDone) {
+    else if (current.equals("peel")) {
       PImage bg = loadImage("assets/kitchen.png");
       bg.resize(600,900);
+      image(bg, 0, 0);
       image(pg, width/2 - 100, height/2 - 100); 
       image(peelGraphics, width/2 - 100, height/2 - 100);
       drawUnpeeled();
@@ -121,6 +131,45 @@ class Curry {
       if(frames>300){
         peelPoints(peeledArea / totalArea);
         current = "leveldone";
+      }
+    }
+    else if (current.equals("boil")) {
+       b.display();
+       if (!b.isActive()) {
+         points = b.getPoints();
+         current = "leveldone";
+       }
+    }
+    else if (current.equals("pour")){
+       c.display();
+      fill(#FFFFFF);
+      text("press k to continue", 140, 200);
+      if(keyPressed==true&&key=='k'){
+        current = "done";
+        level++;
+      }
+    }
+    else if(current.equals("done")){
+      image(end, 0, 0);
+      c.fin();
+      level = 0;
+      textAlign(CENTER);
+      fill(#FFFFFF);
+      text("Click N to Exit", 300, 300);
+      if(points>=2){
+        image(starList.get(0), 0, 100);
+      }
+      if(points>=4){
+        image(starList.get(1), 120, 100);
+      }
+      if(points>=6){
+        image(starList.get(2), 240, 100);
+      }
+      if(points>=8){
+        image(starList.get(3), 360, 100);
+      }
+      if(points==10){
+        image(starList.get(4), 480, 100);
       }
     }
   }
@@ -155,16 +204,23 @@ class Curry {
       peelGraphics.beginDraw();
       peelGraphics.fill(255, 128, 128); 
       peelGraphics.noStroke();
-      peelGraphics.ellipse(x - (width/2 - 100), y - (height/2 - 100), 10, 10); 
+      peelGraphics.ellipse(x - (width / 2 - 100), y - (height / 2 - 100), 10, 10); 
       peelGraphics.endDraw();
-      peeledArea += PI * sq(5); 
-      peeledPart.add(p);
+      for (int i = -5; i <= 5; i++) {
+        for (int j = -5; j <= 5; j++) {
+          PVector pixel = new PVector(x + i, y + j);
+          if (!isPeeled(pixel)) {
+            peeledArea++;
+            peeledPart.add(pixel);
+          }
+        }
+      }
     }
   }
 
   boolean isPeeled(PVector p) {
     for (PVector pv : peeledPart) {
-      if (PVector.dist(p, pv) < 5) { 
+      if (PVector.dist(p, pv) < 1) { 
         return true;
       }
     }
@@ -172,11 +228,16 @@ class Curry {
   }
 
  void mousePressed() {
-    for (Vegetable v : vegetables) {
+   if (current.equals("catch")) {
+     for (Vegetable v : vegetables) {
       if (v.isCaught(mouseX, mouseY)) {
         v.caught();
       }
     }
+   }
+   if (current.equals("pour")) {
+     c.mousePressed();
+   }
   }
   
 
@@ -185,7 +246,9 @@ class Curry {
       peel(mouseX, mouseY);
     }
   }
-
+  void keyPressed() {
+    b.keyPressed();
+  }
 
   int points() {
     return points;

@@ -10,7 +10,7 @@ void setup() {
   size(600, 900);
   PImage bg = loadImage("assets/bg.png");
   image(bg, 0, 0);
-  curry = new Curry();
+  curry = new Curry(this);
   cake = new Cake(this);
 }
 
@@ -43,8 +43,12 @@ void draw() {
   }
   if(current.equals("cake")){
     cake.display();
+    if(cake.getCurrent().equals("done")&&keyPressed==true&&key=='n'){
+      current = "start";
+      cake = new Cake(this);
+    }
   }
-  }
+}
 
 void mousePressed() {
   if(current.equals("curry")){
@@ -56,4 +60,7 @@ void mousePressed() {
 }
 void mouseDragged() {
   curry.mouseDragged();
+}
+void keyPressed() {
+   curry.keyPressed();
 }

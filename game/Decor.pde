@@ -62,8 +62,26 @@ class Decor{
     
   }
   
+  void fin(){
+    image(cake, 0, 240);
+    for(PVector p: strawberryP){
+      image(straw, p.x, p.y);
+    }
+    for(PVector p: frostingP){
+      image(frost, p.x, p.y);
+    }
+    for(PVector p: sprinkleP){
+      image(sprinkle, p.x, p.y);
+    }
+    for(PVector p: cherryP){
+      image(cherry, p.x, p.y);
+    }
+    for(PVector p: chocolateP){
+      image(kiss, p.x, p.y);
+    }
+  }
+  
   void mousePressed(){
-    
     if(mouseX>=0 && mouseX<120 && mouseY>=50 && mouseY<170){
       current = "strawberry";
     }
