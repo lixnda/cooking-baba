@@ -6,7 +6,6 @@ class Boil {
   boolean gameActive;
   int points;
   PImage bg;
-  PImage pot;
 
   Boil() {
    barX = 50;
@@ -22,8 +21,6 @@ class Boil {
     points = 0;
     bg = loadImage("assets/kitchen.png");
     bg.resize(600,900);
-    pot = loadImage("assets/pot.png");
-    pot.resize(0, 600);
   }
   
   int getPoints() {
@@ -34,7 +31,6 @@ class Boil {
   }
   void display() {
     image(bg, 0, 0);
-    image(pot, 0, 240);
     text("Press space when the slider is in the red to boil", 50, 30);
     fill(200);
     rect(barX, barY, barWidth, barHeight);

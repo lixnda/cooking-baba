@@ -35,6 +35,10 @@ void draw() {
   }
   if(current.equals("curry")){
     curry.display();
+    if(curry.getCurrent().equals("done")&&keyPressed==true&&key=='n'){
+      current = "start";
+      curry = new Curry(this);
+    }
   }
  
   

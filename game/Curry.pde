@@ -54,6 +54,10 @@ class Curry {
     b = new Boil();
   }
   
+  String getCurrent(){
+    return current;
+  }
+  
   void catchIngredients() {
     Vegetable veggie = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 1);
     Vegetable veggie2 = new Vegetable(random(0, width), 0, random(-1, 1), random(1, 3), 50, 2);
@@ -83,7 +87,7 @@ class Curry {
       fill(#FFFFFF);
       text("press n to continue \n current points: " + points, 100, 500, 450, 500);
       if(keyPressed==true&&key=='n' && level<4){
-                level++;
+         level++;
         current = games[level];
       }
     }
