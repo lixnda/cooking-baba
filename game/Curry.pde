@@ -95,6 +95,7 @@ class Curry {
       PImage bg = loadImage("assets/grass.png");
       image(bg, 0, 0);
       bg.resize(600,900);
+     
       levelTime = 300;
       for (Vegetable v : vegetables) {
         v.move();
@@ -109,6 +110,8 @@ class Curry {
       textSize(50);
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
+      textSize(40);
+      text("click to catch the vegetables", 25, 100);
       if (frames > 300 || veggies == 6) {
         for (Vegetable v : vegetables) {
           if (v.isCaught()) {
@@ -131,6 +134,8 @@ class Curry {
       textSize(50);
       fill(0);
       text("time left: " + ((levelTime-frames)/30), 50, 100);
+      textSize(40);
+      text("Click and drag to peel", 50, 150);
       //60fps?
       if(frames>300){
         peelPoints(peeledArea / totalArea);

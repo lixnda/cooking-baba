@@ -34,11 +34,12 @@ class Boil {
   }
   void display() {
     image(bg, 0, 0);
-    image(pot, 0, 240);
-    text("Press space when the slider is in the red to boil", 50, 30);
-    fill(200);
-    rect(barX, barY, barWidth, barHeight);
+    image(pot, 0, 220);
+    textSize(25);
+    text("Press space when the slider is in the green to boil", 25, 50);
     fill(255, 0, 0);
+    rect(barX, barY, barWidth, barHeight);
+    fill(40, 166, 44);
     rect(targetX, barY, targetWidth, barHeight);
     fill(0);
     rect(sliderX, barY - 10, 10, barHeight + 20);
