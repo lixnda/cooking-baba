@@ -1,9 +1,9 @@
 import gifAnimation.*;
 
-Curry curry;
-Cake cake;
-int points;
-String current;
+private Curry curry;
+private Cake cake;
+private int points;
+private String current;
 
 void setup() {
   current = "start";
