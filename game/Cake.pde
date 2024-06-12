@@ -23,19 +23,19 @@ class Cake{
   Cake(PApplet p){
     ChickenList = new ArrayList<Chicken>();
     starList = new ArrayList<Gif>();
-    for(int i = 0; i<20; i++){
+    for(int i = 0; i<30; i++){
       ChickenList.add(new Chicken(p, random(50,550), random(50,850),random(-6,6),random(-6,7)));
     }
     for(int i = 0; i<5; i++){
       starList.add(new Gif(p, "assets/star.gif"));
       starList.get(i).loop();
     }
-    ing = new Ingredient(20);
+    ing = new Ingredient(30);
     c = new Decor();
-    a= (int)(random(1, 99));
-    b= (int)(random(1, 99));
+    a= (int)(random(99, 199));
+    b= (int)(random(99, 199));
     done = false;
-    temp = 0;
+    temp = (int)(random(99, 199));
     point = 0;
     frames = 0;
     index = 0;
@@ -79,8 +79,8 @@ class Cake{
       fill(#FFFFFF);
       text("press n to continue \n current points: " + point, 100, 500, 450, 500);
       if(keyPressed==true&&key=='n' && level<4){
-        level++;
         current = games[level];
+        level++;
       }
     }
     
@@ -99,7 +99,7 @@ class Cake{
       textAlign(LEFT);
       text("time left: " + ((levelTime-frames)/30), 25, 50);
       //60fps?
-      if(frames>levelTime){
+      if(frames>levelTime||pointChicken()==30){
         point+=pointChicken();
         current="leveldone";
       }
@@ -169,19 +169,20 @@ class Cake{
       textAlign(CENTER);
       fill(#FFFFFF);
       text("Click N to Exit", 300, 300);
-      if(point>=12){
+      int k = 90/5;
+      if(point>=k){
         image(starList.get(0), 0, 100);
       }
-      if(point>=24){
+      if(point>=k*2){
         image(starList.get(1), 120, 100);
       }
-      if(point>=36){
+      if(point>=k*3){
         image(starList.get(2), 240, 100);
       }
-      if(point>=48){
+      if(point>=k*4){
         image(starList.get(3), 360, 100);
       }
-      if(point>=55){
+      if(point>=k*5-5){
         image(starList.get(4), 480, 100);
       }
     }
@@ -199,14 +200,14 @@ class Cake{
   }
   
   int pointIng(){
-    int total = 20 - ing.getSize();
+    int total = 30 - ing.getSize();
     return total;
   }
   
   int pointBake(){
     int total = 0;
     if(temp==(a+b)){
-      total = 20;
+      total = 30;
     }
     return total;
   }
