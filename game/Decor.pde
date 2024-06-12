@@ -1,7 +1,7 @@
 class Decor{
-  PImage strawberry, frosting, sprinkle, cherry, chocolate, background, cake, kiss, straw, frost;
-  String current = "";
-  ArrayList<PVector> strawberryP, frostingP, sprinkleP, cherryP, chocolateP;
+  private PImage strawberry, frosting, sprinkle, cherry, chocolate, background, cake, kiss, straw, frost;
+  private String current = "";
+  private ArrayList<PVector> strawberryP, frostingP, sprinkleP, cherryP, chocolateP;
   
   Decor(){
     strawberryP = new ArrayList<PVector>();

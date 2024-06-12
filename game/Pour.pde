@@ -1,7 +1,7 @@
 class Pour {
-  PImage bowl, coriander, cori, carrot, carr, celery, cel, background;
-  String current = "";
-  ArrayList<PVector> corianderP, carrotP, celeryP;
+  private PImage bowl, coriander, cori, carrot, carr, celery, cel, background;
+  private String current = "";
+  private ArrayList<PVector> corianderP, carrotP, celeryP;
   
   Pour() {
     corianderP = new ArrayList<PVector>();

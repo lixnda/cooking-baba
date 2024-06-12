@@ -1,8 +1,8 @@
 class Ingredient{
   private ArrayList<String> order;
   
-  String[] possible = {"flour", "sugar", "salt", "egg", "baking powder", "milk", "strawberry","butter"};
-  PImage flour, sugar, salt, egg, baking, milk, strawberry, butter, background;
+  private String[] possible = {"flour", "sugar", "salt", "egg", "baking powder", "milk", "strawberry","butter"};
+  private PImage flour, sugar, salt, egg, baking, milk, strawberry, butter, background;
   
   Ingredient(int total){
     order = new ArrayList<String>();

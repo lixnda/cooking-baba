@@ -4,20 +4,20 @@ class Cake{
   private int frames;
   private int levelTime;
   
-  ArrayList<Chicken> ChickenList; //level1
-  ArrayList<Gif> starList;
+  private ArrayList<Chicken> ChickenList; //level1
+  private ArrayList<Gif> starList;
   
-  Ingredient ing; //level2
+  private Ingredient ing; //level2
   
-  int a, b, index, timeleft, temp; //level3
-  boolean done;
+  private int a, b, index, timeleft, temp; //level3
+  private boolean done;
   
-  Decor c; //level4
+  private Decor c; //level4
   
-  String[] games = {"chicken", "ingredient", "bake", "decor", "done"};
-  int level = 1;
-  boolean levelDone;
-  PImage done0, done1, background, end;
+  private String[] games = {"chicken", "ingredient", "bake", "decor", "done"};
+  private int level = 1;
+  private boolean levelDone;
+  private PImage done0, done1, background, end;
   
   
   Cake(PApplet p){
